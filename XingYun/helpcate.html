@@ -1,0 +1,142 @@
+{include file="common/header" title="$helpListCate.catename" /}
+{tagdata name="helpCate,helpListCate"/}
+<!-- 主体内容 -->
+<main class="ys_main new_main">
+    <!-- page start -->
+    <div class="inside_cont">
+        <!-- 面包屑 -->
+        <div class="ys_ban_bread ys_cont1400 ys_pos_top">
+            <ul>
+                <li>
+                    <a href="/">首页</a>
+                </li>
+                <li>
+                    <a href="/about.html">
+                        文档中心
+                    </a>
+                </li>
+                <li>
+                    <a href="/help.html">
+                        帮助文档
+                    </a>
+                </li>
+                <li>
+                    <a href="/helpcate/{$helpListCate.cateid}.html">
+                        {$helpListCate.catename}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="new_ban std_padding2">
+            <div class="ys_cont1400">
+                <div class="new_ban_tit home_title">
+                    <h1 class="std_title1">{$setting.company_name} | 帮助中心</h1>
+                </div>
+                <div class="new_ban_parga std_text">
+                    <p>每一天，记录行动与改变</p>
+                </div>
+            </div>
+        </div>
+        <div class="new_cont std_padding2" data-page="1">
+            <div class="ys_cont1400">
+                <div class="new_cont_top clearfix">
+                    <div class="new_cont_top_tab fl">
+                        <ul class="nctt_ul clearfix">
+                            <!-- 选中添加act类名 默认第一个加on类名 -->
+                            <li class="nctt_ul_li  on fl">
+                                <a href="/help.html">所有分类</a>
+                            </li>
+                            {foreach $helpCate as $key=>$vo }
+                            <li class="nctt_ul_li  on fl {if condition=" ($helpListCate.cateid !=$vo.id)"}
+                                {else/}act{/if}">
+                                <a href="/helpcate/{$vo.id}.html">{$vo.title}</a>
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
+                <div class="new_cont_bot">
+                    <!-- 第一页逻辑:没有前边的箭头，最后一页逻辑：没有后边的箭头 -->
+                    <ul class="new_cont_bot_ul clearfix">
+                        {foreach $helpListCate.list as $key=>$vo }
+                        <li class="ncbu_li fl">
+                            <a href="/helpcontent/{$vo.id}.html" title="">
+                                <!-- <div class="ys_imgbox_cover">
+                                    <img src="{$setting.web_view}/picture/l_pics14.png" alt="">
+                                    <img src="{$setting.web_view}/picture/16871381650652c9f809d87b8132a2240188d145614915cc.png"
+                                        alt="">
+                                </div> -->
+                                <div class="ncbu_li_cont">
+                                    <div class="ncbu_li_cont_tit">
+                                        {$vo.title}</div>
+                                    <div class="ncbu_li_cont_parga std_text">
+                                        <p>{$vo.description}</p>
+                                    </div>
+                                    <div class="ncbu_li_cont_time std_text">
+                                        <p>{$vo.push_date}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    {if $helpListCate.total_page > 1}
+                    <div class="new_cont_bot_page">
+                        <div class="ys_pcfy">
+                            <ul class="pc_fenye clearfix">
+                                <a class="prev" href="/helpcate/{$helpListCate.cateid}/{$helpListCate.previous}.html">
+                                    <li></li>
+                                </a>
+                                {for start="$helpListCate.start" end="$helpListCate.num"}
+                                <a class="comp-tabli activepage" href="/helpcate/{$helpListCate.cateid}/{$i}.html">
+                                    <li>
+                                        {$i}
+                                    </li>
+                                </a>
+                                {/for}
+                                <a class="next" href="/helpcate/{$helpListCate.cateid}/{$helpListCate.next}.html">
+                                    <li></li>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="ys_phfy clearfix">
+                            <div class="ys_phfyfl fl"><a
+                                    href="/helpcate/{$helpListCate.cateid}/{$helpListCate.previous}.html">上一页</a>
+                            </div>
+                            <div class="ys_phfyfl fr"><a
+                                    href="/helpcate/{$helpListCate.cateid}/{$helpListCate.next}.html">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                    {else}
+                    <div class="new_cont_bot_page">
+                        <div class="ys_pcfy">
+                            <ul class="pc_fenye clearfix">
+                                <a class="prev" href="/helpcate/{$helpListCate.cateid}/1.html">
+                                    <li></li>
+                                </a>
+                                <a class="comp-tabli activepage" href="/helpcate/{$helpListCate.cateid}/1.html">
+                                    <li>
+                                        1
+                                    </li>
+                                </a>
+                                <a class="next" href="/helpcate/{$helpListCate.cateid}/1.html">
+                                    <li></li>
+                                </a>
+                            </ul>
+                        </div>
+                        <div class="ys_phfy clearfix">
+                            <div class="ys_phfyfl fl"><a href="/helpcate/{$helpListCate.cateid}/1.html">上一页</a>
+                            </div>
+                            <div class="ys_phfyfl fr"><a href="/helpcate/{$helpListCate.cateid}/1.html">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page end -->
+</main>
+{include file="common/footer" /}

@@ -1,0 +1,111 @@
+{include file="common/header" title="$newsContent.title" " keywords="$newsContent.keywords"
+description="$newsContent.description"/}
+{tagdata name="newsCate,newsContent" /}
+<main class="ys_main newdet_main">
+    <!-- page start -->
+    <div class="inside_cont">
+        <!-- 面包屑 -->
+        <div class="ys_ban_bread ys_cont1400 ys_pos_top">
+            <ul>
+                <li>
+                    <a href="/">首页</a>
+                </li>
+                <li>
+                    <a href="/about.html">
+                        关于我们
+                    </a>
+                </li>
+                <li>
+                    <a href="/news.html">
+                        新闻资讯
+                    </a>
+                </li>
+                <li>
+                    <a href="/newscate/{$newsContent.parent_id}.html">
+                        {$newsContent.cate_name}
+                    </a>
+                </li>
+                <li>
+                    <a href="/newscontent/{$newsContent.id}.html">
+                        {$newsContent.title}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="newdet_cont std_padding2">
+            <div class="ys_cont1400 clearfix" data-sticky-container>
+                <div class="newdet_cont_left fl">
+                    <div class="newdet_cont_left_tits">
+                        <div class="nclt_tit">
+                            <h1 class="std_title3">{$newsContent.title}
+                            </h1>
+                        </div>
+                        <div class="nclt_info clearfix">
+                            <div class="nclt_info_time fl">
+                                <div class="nclt_info_time_icon">
+                                    <img src="{$setting.web_view}/picture/h3_icon01.svg" alt="">
+                                </div>
+                                <div class="nclt_info_time_text std_text clearfix">
+                                    <div class="nitt_text1 fl">
+                                        <p>发布时间</p>
+                                    </div>
+                                    <div class="nitt_text2 fl">
+                                        <p>{$newsContent.push_time | date='Y-m-d H:i'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="newdet_cont_left_edr yxedr_active">
+                        {$newsContent.content}
+                    </div>
+                    <div class="newdet_cont_left_page std_text">
+                        <ul>
+                            {if $newsContent.prev.title != ""}
+                            <li>
+                                <a href="/newscontent/{$newsContent.prev.id}.html" title="">
+                                    <p>上一篇：{$newsContent.prev.title}</p>
+                                </a>
+                            </li>
+                            {/if}
+                            {if $newsContent.next.title != ""}
+                            <li>
+                                <a href="/newscontent/{$newsContent.next.id}.html" title="">
+                                    <p>下一篇： {$newsContent.next.title}</p>
+                                </a>
+                            </li>
+                            {/if}
+                        </ul>
+                    </div>
+                </div>
+                <div class="newdet_cont_right fr">
+                    <div class="newdet_cont_right_tit">
+                        <h4 class="std_title4">新闻中心</h4>
+                    </div>
+                    <div class="newdet_cont_right_list">
+                        <ul class="ncrl_ul">
+                            <li class="ncrl_ul_li">
+                                <!-- <a href="https://cloud.inspur.com/about-inspurcloud/about-us/news/Brand-News/3386.html"
+                                    title=""> -->
+                                <div class="ys_imgbox_cover" id="xwqrcode">
+                                    <div class="ewm">{php} $str='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                                        {/php}
+                                        <img width="160px" src="https://api.pwmqr.com/qrcode/create/?url={$str}"
+                                            alt="新闻公告">
+                                    </div>
+                                </div>
+                                <div class="ncrl_ul_li_cont">
+                                    <div class="nulc_tit ncbu_li_cont_tit saomachakan">
+                                        扫码查看{$setting.company_name}新闻</div>
+                                </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page end -->
+</main>
+{include file="common/footer" /}

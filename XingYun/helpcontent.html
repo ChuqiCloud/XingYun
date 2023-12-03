@@ -1,0 +1,111 @@
+{include file="common/header" title="$helpContent.title" " keywords="$helpContent.keywords"
+description="$helpContent.description"/}
+{tagdata name="helpCate,helpContent" /}
+<main class="ys_main newdet_main">
+    <!-- page start -->
+    <div class="inside_cont">
+        <!-- 面包屑 -->
+        <div class="ys_ban_bread ys_cont1400 ys_pos_top">
+            <ul>
+                <li>
+                    <a href="/">首页</a>
+                </li>
+                <li>
+                    <a href="/about.html">
+                        文档中心
+                    </a>
+                </li>
+                <li>
+                    <a href="/help.html">
+                        帮助文档
+                    </a>
+                </li>
+                <li>
+                    <a href="/helpcate/{$helpContent.parent_id}.html">
+                        {$helpContent.cate_name}
+                    </a>
+                </li>
+                <li>
+                    <a href="/helpcontent/{$helpContent.id}.html">
+                        {$helpContent.title}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="newdet_cont std_padding2">
+            <div class="ys_cont1400 clearfix" data-sticky-container>
+                <div class="newdet_cont_left fl">
+                    <div class="newdet_cont_left_tits">
+                        <div class="nclt_tit">
+                            <h1 class="std_title3">{$helpContent.title}
+                            </h1>
+                        </div>
+                        <div class="nclt_info clearfix">
+                            <div class="nclt_info_time fl">
+                                <div class="nclt_info_time_icon">
+                                    <img src="{$setting.web_view}/picture/h3_icon01.svg" alt="">
+                                </div>
+                                <div class="nclt_info_time_text std_text clearfix">
+                                    <div class="nitt_text1 fl">
+                                        <p>发布时间</p>
+                                    </div>
+                                    <div class="nitt_text2 fl">
+                                        <p>{$helpContent.push_time | date='Y-m-d H:i'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="newdet_cont_left_edr yxedr_active">
+                        {$helpContent.content}
+                    </div>
+                    <div class="newdet_cont_left_page std_text">
+                        <ul>
+                            {if $helpContent.prev.title != ""}
+                            <li>
+                                <a href="/helpcontent/{$helpContent.prev.id}.html" title="">
+                                    <p>上一篇：{$helpContent.prev.title}</p>
+                                </a>
+                            </li>
+                            {/if}
+                            {if $helpContent.next.title != ""}
+                            <li>
+                                <a href="/helpcontent/{$helpContent.next.id}.html" title="">
+                                    <p>下一篇： {$helpContent.next.title}</p>
+                                </a>
+                            </li>
+                            {/if}
+                        </ul>
+                    </div>
+                </div>
+                <div class="newdet_cont_right fr">
+                    <div class="newdet_cont_right_tit">
+                        <h4 class="std_title4">帮助文档</h4>
+                    </div>
+                    <div class="newdet_cont_right_list">
+                        <ul class="ncrl_ul">
+                            <li class="ncrl_ul_li">
+                                <!-- <a href="https://cloud.inspur.com/about-inspurcloud/about-us/news/Brand-News/3386.html"
+                                    title=""> -->
+                                <div class="ys_imgbox_cover" id="xwqrcode">
+                                    <div class="ewm">{php} $str='http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                                        {/php}
+                                        <img width="160px" src="https://api.pwmqr.com/qrcode/create/?url={$str}"
+                                            alt="新闻公告">
+                                    </div>
+                                </div>
+                                <div class="ncrl_ul_li_cont">
+                                    <div class="nulc_tit ncbu_li_cont_tit saomachakan">
+                                        扫码查看{$setting.company_name}帮助文档</div>
+                                </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page end -->
+</main>
+{include file="common/footer" /}

@@ -1,0 +1,57 @@
+{include file="common/header" title="$helpContent.title" keywords="$helpContent.keywords"
+description="$helpContent.description" /}
+{tagdata name="helpCate,helpContent " /}
+<title>{$helpContent.title} - {$setting.company_name} {$CustomDepot.index_title}</title>
+<main id="main-container2">
+    <section id="main-body">
+        <div class="bg-white" style="height: 65px;box-shadow: 1px 1px 19px rgba(28, 61, 94, 0.17);line-height: 65px;">
+            <section class="content-full content-boxed container">
+                <i class="fa fa-book" style="margin-right: 10px;font-size: 20px;color: #00C0FA;"></i><span
+                    style="color: #00c0fa;font-weight: 600;font-size: 18px;">帮助中心</span>
+            </section>
+        </div>
+
+
+        <section id="main-body">
+            <div class="main-content">
+
+
+                <section class="content-full content-boxed container push-50-t" style="margin-bottom: 150px;">
+                    <p style="font-size: 14px;margin-top: -20px; margin-bottom: 20px;"><a href="/">首页</a> > <a
+                            href="/help.html">帮助中心</a> >
+                        <a href="">{$helpContent.title}</a>
+                    </p>
+                    <div class="kb-article-title text-center push-30-t">
+                        <a href="#" class="btn btn-link btn-print" onclick="window.print();return false"><i
+                                class="fa fa-print"></i></a>
+                        <h2>{$helpContent.title}</h2>
+                    </div>
+
+
+                    <div class="bg-white push-30-t"
+                        style="border-radius: 5px;padding: 35px;box-shadow: 1px 1px 22px rgba(157, 184, 209, 0.19);">
+
+                        <div class="kb-article-content">
+                            {$helpContent.content}
+                        </div>
+                    </div>
+                    <ul class="kb-article-details">
+                        <li><i class="fa fa-star"></i> {$helpContent.read} 用户发现这个很有用</li>
+                    </ul>
+                    <div class="clearfix"></div>
+
+                    <div class="kb-rate-article hidden-print">
+                        {foreach $helpListCate.list as $key=>$vo }
+                        <form action="/helpdetail/{$vo.id}.html" method="post">{/foreach}
+                            <input type="hidden" name="token" value="6963f18380cffad1c811b9c4fba44324c8999382" />
+                            <input type="hidden" name="useful" value="vote">
+                            此文章对您是否有帮助？
+                        </form>
+                    </div>
+
+                </section>
+
+            </div>
+        </section>
+
+        {include file="common/footer" /}
